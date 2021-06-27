@@ -1,0 +1,1 @@
+export { Shorten } from "./shorten";
