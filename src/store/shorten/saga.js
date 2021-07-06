@@ -6,12 +6,12 @@ import { shortenSuccess, requestFailure } from "./actions";
 
 import { axiosInstance } from "../../utils/axios-instance";
 
-function* shortenLink({ longLink }) {
+function* shortenLink({ originalLink }) {
     try {
         const { data } = yield call(
-            axiosInstance.get,
+            axiosInstance.post,
             ENDPOINTS.SHORTEN_ENDPOINT,
-            longLink
+            { original_link: originalLink }
         );
         yield put(shortenSuccess(data));
     } catch (err) {

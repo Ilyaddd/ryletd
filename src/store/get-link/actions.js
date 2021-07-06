@@ -5,9 +5,9 @@ export const getLinkRequest = (shortLink) => ({
     shortLink,
 });
 
-export const getLinkSuccess = (longLink) => ({
+export const getLinkSuccess = (originalLink) => ({
     type: TYPES.GET_LINK_REQUEST_SUCCESS,
-    longLink,
+    originalLink,
 });
 
 export const requestFailure = (error) => ({

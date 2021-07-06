@@ -4,7 +4,7 @@ const initialState = {
     isLoading: true,
     isError: false,
     Error: "",
-    longLink: "",
+    originalLink: "",
 };
 
 export const getLinkReducer = (state = initialState, action) => {
@@ -22,7 +22,7 @@ export const getLinkReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: false,
-                longLink: action.longLink,
+                redirectLink: action.originalLink,
             };
 
         // FAILURE

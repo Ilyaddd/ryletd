@@ -4,7 +4,7 @@ const initialState = {
     isLoading: true,
     isError: false,
     Error: "",
-    longLink: "",
+    originalLink: "",
 };
 
 export const shortenReducer = (state = initialState, action) => {

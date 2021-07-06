@@ -1,8 +1,8 @@
 import { TYPES } from "../types";
 
-export const shortenRequest = (longLink) => ({
+export const shortenRequest = (originalLink) => ({
     type: TYPES.SHORTEN_REQUEST,
-    longLink,
+    originalLink,
 });
 
 export const shortenSuccess = (shortLink) => ({

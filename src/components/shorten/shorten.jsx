@@ -9,17 +9,21 @@ import "./shorten.sass";
 
 export const Shorten = () => {
     const dispatch = useDispatch();
-    const [longLink, setLongLink] = useState(null);
+    const [originalLink, setOriginalLink] = useState(null);
 
     const onShorten = (e) => {
         e.preventDefault();
-        dispatch(shortenRequest(longLink));
+        dispatch(shortenRequest(originalLink));
     };
 
     return (
         <div>
             <h2>Shorten</h2>
-            <Input name="long" value={longLink} onFieldChange={setLongLink} />
+            <Input
+                name="long"
+                value={originalLink}
+                onFieldChange={setOriginalLink}
+            />
             <button type="submit" onClick={onShorten}>
                 Shorten
             </button>
