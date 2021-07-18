@@ -24,17 +24,17 @@ export const Follow = () => {
             {isRedirect ? (
                 <Redirect to={shortLink} />
             ) : (
-                <div>
-                    <h2>Follow the link →</h2>
+                <section className="section">
                     <Input
+                        title="Follow the link →"
                         name="long"
                         value={shortLink}
                         onFieldChange={setshortLink}
                     />
-                    <button type="submit" onClick={onFollow}>
+                    <button type="submit" onClick={onFollow} className="btn">
                         Follow
                     </button>
-                </div>
+                </section>
             )}
         </>
     );

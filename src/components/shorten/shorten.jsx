@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { Input } from "../input";
+import { Button } from "../button";
 
 import { shortenRequest } from "../../store/shorten/actions";
 
@@ -17,16 +18,14 @@ export const Shorten = () => {
     };
 
     return (
-        <div>
-            <h2>Shorten</h2>
+        <section className="section">
             <Input
+                title="Shorten link"
                 name="long"
                 value={originalLink}
                 onFieldChange={setOriginalLink}
             />
-            <button type="submit" onClick={onShorten}>
-                Shorten
-            </button>
-        </div>
+            <Button value="Shorten" onClick={onShorten} />
+        </section>
     );
 };

@@ -6,7 +6,7 @@ import { Shorten } from "../../components/shorten";
 import "./main.sass";
 
 export const Main = () => (
-    <form>
+    <form id="main__form">
         <Follow />
         <Shorten />
     </form>
