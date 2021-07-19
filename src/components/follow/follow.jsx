@@ -3,8 +3,11 @@ import { useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
 
 import { Input } from "../input";
+import { Button } from "../button";
 
 import { getLinkRequest } from "../../store/get-link/actions";
+
+import btnImg from "./assets/arrow.svg";
 
 import "./follow.sass";
 
@@ -31,9 +34,11 @@ export const Follow = () => {
                         value={shortLink}
                         onFieldChange={setshortLink}
                     />
-                    <button type="submit" onClick={onFollow} className="btn">
-                        Follow
-                    </button>
+                    <Button
+                        defaultValue="Follow"
+                        activeValue={btnImg}
+                        onClick={onFollow}
+                    />
                 </section>
             )}
         </>

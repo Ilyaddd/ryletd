@@ -1,15 +1,58 @@
 @import '../../colors.sass'
 
-.btn__wrapper 
-    perspective: 1000px 
+// .btn__wrapper 
+//     perspective: 1000px 
+// .btn
+//     padding: 10px 30px
+//     font-size: 2rem
+//     user-select: none
+//     cursor: pointer
+//     font-weight: bold
+//     background: $background
+//     color: $color
+//     border: 3px solid $red    
+//     &:hover
+
+
+$btn-height: 60px
+
+/* CORE CSS */
+.btn__wrapper
+    perspective: 1000px
+
+/* Container box to set the sides relative to */
 .btn
-    padding: 10px 30px
-    font-size: 2rem
-    user-select: none
-    cursor: pointer
-    font-weight: bold
-    background: $background
-    color: $color
-    border: 3px solid $red
+    height: $btn-height
+    transition: .25s
+    transform-style: preserve-3d
+
+    text-align: center
+    margin: 0 auto
+    .btn__text
+        padding: 0 30px
+    .btn__img
+        height: 45px
+
+    /* Position the faces */
+    &__active_block
+        transform: rotateX(90deg) translateZ($btn-height * 1.5)
+        background: darken(#2ecc71, 7%)
+    &__default_block
+        transform: translateZ($btn-height / 2)
     
-    &:hover
+    /* Rotate the btn */
+    &.btn:hover
+        transform: rotateX(-89deg)
+        
+    /* The two faces of the btn */
+    &__default_block, &__active_block
+        height: $btn-height
+        background: #2ecc71
+        font-size: 16px
+        text-transform: uppercase
+        color: #fff
+        line-height: $btn-height
+        transition: 250ms ease
+
+    &:hover .btn__default_block
+        background: darken(#2ecc71, 7%)
