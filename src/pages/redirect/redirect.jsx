@@ -14,8 +14,6 @@ export const RedirectPage = () => {
     }, [dispatch]);
     const { redirectLink, isError } = useSelector((state) => state.link);
 
-    console.log(useSelector((state) => state));
-
     if (redirectLink !== undefined && redirectLink !== "") {
         window.location.replace(
             redirectLink.includes("http")
