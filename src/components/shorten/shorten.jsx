@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { Input } from "../input";
 import { Button } from "../button";
 
-import { shortenRequest } from "../../store/shorten/actions";
+import { shortenRequest } from "../../store/link/actions";
 import { checkIsLink } from "../../utils/check-is-link";
 
 import btnImg from "./assets/arrow.svg";

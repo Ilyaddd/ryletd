@@ -5,18 +5,34 @@ const initialState = {
     isError: false,
     Error: "",
     originalLink: "",
+    redirectLink: "",
 };
 
-export const getLinkReducer = (state = initialState, action) => {
+export const linkReducer = (state = initialState, action) => {
     switch (action.type) {
-        case TYPES.SHORTEN_REQUEST:
+        // Сокращение ссылки
+        case TYPES.REQUEST:
             return {
                 ...state,
                 isLoading: true,
                 isError: false,
             };
 
-        // SUCCESS
+        case TYPES.SHORTEN_REQUEST_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                isError: false,
+                redirectLink: action.shortLink.shortLink,
+            };
+
+        // Получение оригинальной ссылки
+        case TYPES.GET_LINK_REQUEST:
+            return {
+                ...state,
+                isLoading: true,
+                isError: false,
+            };
         case TYPES.GET_LINK_REQUEST_SUCCESS:
             return {
                 ...state,
@@ -26,7 +42,7 @@ export const getLinkReducer = (state = initialState, action) => {
             };
 
         // FAILURE
-        case TYPES.SHORTEN_REQUEST_FAILTURE:
+        case TYPES.FAILTURE:
             return {
                 ...state,
                 isLoading: false,

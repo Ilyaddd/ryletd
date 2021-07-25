@@ -5,7 +5,7 @@ import { Redirect } from "react-router-dom";
 import { Input } from "../input";
 import { Button } from "../button";
 
-import { getLinkRequest } from "../../store/get-link/actions";
+import { getLinkRequest } from "../../store/link/actions";
 
 import btnImg from "./assets/arrow.svg";
 
