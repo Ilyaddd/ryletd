@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Input } from "../input";
 import { Button } from "../button";
@@ -13,6 +13,7 @@ import "./shorten.sass";
 
 export const Shorten = () => {
     const dispatch = useDispatch();
+    const { redirectLink } = useSelector((state) => state.link);
     const [originalLink, setOriginalLink] = useState(null);
 
     const onShorten = (e) => {
@@ -26,10 +27,16 @@ export const Shorten = () => {
         <section className="section">
             <Input
                 title="Shorten link"
-                name="long"
                 value={originalLink}
                 onFieldChange={setOriginalLink}
             />
+            {redirectLink && (
+                <Input
+                    value={`http://localhost:5555/${redirectLink}`}
+                    readonly="readonly"
+                    className="animate"
+                />
+            )}
             <Button value="Shorten" activeValue={btnImg} onClick={onShorten} />
         </section>
     );

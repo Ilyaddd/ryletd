@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import classnames from "classnames";
 
 import "./input.sass";
 
@@ -8,23 +9,23 @@ export const Input = ({
     name,
     placeholder = "",
     onFieldChange,
+    className,
+    readonly,
 }) => {
-    const [inputValue, setValue] = useState(value || "");
-
     return (
         <div className="input__wrapper">
             <h3 className="input__title">{title}</h3>
             <input
                 name={name}
                 type="text"
-                value={inputValue}
-                className="input"
+                value={value}
+                className={classnames("input", className)}
                 onChange={(e) => {
                     onFieldChange(e.target.value);
-                    setValue(e.target.value);
                 }}
                 placeholder={placeholder}
                 autoComplete="off"
+                readonly={readonly}
             />
         </div>
     );

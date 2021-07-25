@@ -1,6 +1,6 @@
 import { TYPES } from "../types";
 
-import { MESSAGEBOX_TEXTS } from "./errors";
+import { MESSAGEBOX_TEXTS } from "./values";
 
 const initialState = {
     messageText: "",
