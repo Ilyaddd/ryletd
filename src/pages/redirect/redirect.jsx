@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 
@@ -12,8 +12,13 @@ export const RedirectPage = () => {
         dispatch(getLinkRequest(link));
     }, [dispatch]);
     const { redirectLink } = useSelector((state) => state.link);
-
-    redirectLink &&
-        window.location.replace(`${redirectLink?.originalLink.original_link}`);
+    console.log(useSelector((state) => state));
+    if (redirectLink !== undefined) {
+        window.location.replace(
+            redirectLink.includes("http")
+                ? redirectLink
+                : `https://${redirectLink}`
+        );
+    }
     return null;
 };

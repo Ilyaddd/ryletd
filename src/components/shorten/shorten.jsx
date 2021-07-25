@@ -5,6 +5,9 @@ import { Input } from "../input";
 import { Button } from "../button";
 
 import { shortenRequest } from "../../store/shorten/actions";
+import { checkIsLink } from "../../utils/check-is-link";
+
+import btnImg from "./assets/arrow.svg";
 
 import "./shorten.sass";
 
@@ -14,7 +17,9 @@ export const Shorten = () => {
 
     const onShorten = (e) => {
         e.preventDefault();
-        dispatch(shortenRequest(originalLink));
+        if (checkIsLink(originalLink)) {
+            dispatch(shortenRequest(originalLink));
+        }
     };
 
     return (
@@ -25,7 +30,7 @@ export const Shorten = () => {
                 value={originalLink}
                 onFieldChange={setOriginalLink}
             />
-            <Button value="Shorten" onClick={onShorten} />
+            <Button value="Shorten" activeValue={btnImg} onClick={onShorten} />
         </section>
     );
 };

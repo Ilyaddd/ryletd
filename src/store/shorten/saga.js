@@ -11,7 +11,7 @@ function* shortenLink({ originalLink }) {
         const { data } = yield call(
             axiosInstance.post,
             ENDPOINTS.SHORTEN_ENDPOINT,
-            { original_link: originalLink }
+            { params: { originalLink } }
         );
         yield put(shortenSuccess(data));
     } catch (err) {

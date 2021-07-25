@@ -22,7 +22,7 @@ export const getLinkReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: false,
-                redirectLink: action.originalLink,
+                redirectLink: action.original_link.original_link,
             };
 
         // FAILURE

@@ -18,8 +18,10 @@ export const Follow = () => {
 
     const onFollow = (e) => {
         e.preventDefault();
-        dispatch(getLinkRequest(shortLink));
-        setRedirect(true);
+        if (shortLink) {
+            dispatch(getLinkRequest(shortLink));
+            setRedirect(true);
+        }
     };
 
     return (
@@ -29,13 +31,13 @@ export const Follow = () => {
             ) : (
                 <section className="section">
                     <Input
-                        title="Follow the link →"
+                        title="Follow the link"
                         name="long"
                         value={shortLink}
                         onFieldChange={setshortLink}
                     />
                     <Button
-                        defaultValue="Follow"
+                        value="Follow"
                         activeValue={btnImg}
                         onClick={onFollow}
                     />
