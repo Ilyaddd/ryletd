@@ -5,12 +5,14 @@ import { Redirect } from "react-router-dom";
 
 import { getLinkRequest } from "../../store/link/actions";
 
+import { setMessageboxFailture } from "../../store/messagebox/actions";
+
 export const RedirectPage = () => {
     const dispatch = useDispatch();
-    const { link } = useParams();
+    const { shortLink } = useParams();
 
     useEffect(() => {
-        dispatch(getLinkRequest(link));
+        dispatch(getLinkRequest({ shortLink }));
     }, [dispatch]);
     const { redirectLink, isError } = useSelector((state) => state.link);
 
@@ -21,6 +23,8 @@ export const RedirectPage = () => {
                 : `https://${redirectLink}`
         );
     }
+
+    if (isError) dispatch(setMessageboxFailture());
 
     return <>{isError && <Redirect to="/" />}</>;
 };

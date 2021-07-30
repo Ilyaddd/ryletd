@@ -18,14 +18,14 @@ export const Input = ({
             <input
                 name={name}
                 type="text"
-                value={value}
+                value={value || ""}
                 className={classnames("input", className)}
                 onChange={(e) => {
                     onFieldChange(e.target.value);
                 }}
                 placeholder={placeholder}
                 autoComplete="off"
-                readonly={readonly}
+                readOnly={readonly}
             />
         </div>
     );

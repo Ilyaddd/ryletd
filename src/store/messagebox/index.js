@@ -4,21 +4,37 @@ import { MESSAGEBOX_TEXTS } from "./values";
 
 const initialState = {
     messageText: "",
-    isActive: false,
+    isSuccess: false,
+    isError: false,
 };
 
 export const messageboxReducer = (state = initialState, action) => {
     switch (action.type) {
-        case TYPES.FAILTURE: {
+        case TYPES.SET_MESSAGEBOX_SUCCESS: {
             return {
                 ...state,
-                isActive: true,
+                isSuccess: true,
+                isError: false,
+                messageText: MESSAGEBOX_TEXTS.LINK_COPIED,
+            };
+        }
+
+        case TYPES.SET_MESSAGEBOX_ERROR: {
+            return {
+                ...state,
+                isSuccess: false,
+                isError: true,
                 messageText: MESSAGEBOX_TEXTS.GET_LINK_ERROR,
             };
         }
 
         case TYPES.SET_MESSAGEBOX_DEFAULT:
-            return { ...state, isActive: false, messageText: "" };
+            return {
+                ...state,
+                isSuccess: false,
+                isError: false,
+                messageText: "",
+            };
 
         default:
             return state;

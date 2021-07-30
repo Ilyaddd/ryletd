@@ -1,15 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import classNames from "classnames";
 
 import { setMessageBoxDefault } from "../../store/messagebox/actions";
 
 import errorIcon from "./assets/error.svg";
+import successIcon from "./assets/success.svg";
 import "./messagebox.sass";
 
 export const Messagebox = () => {
     const dispatch = useDispatch();
-    const { isActive, messageText } = useSelector((state) => state.messagebox);
+    const { isSuccess, isError, messageText } = useSelector(
+        (state) => state.messagebox
+    );
 
+    const isActive = isSuccess || isError;
     const onSetMessageBoxDisable = () => dispatch(setMessageBoxDefault());
 
     useEffect(() => {
@@ -20,12 +25,19 @@ export const Messagebox = () => {
 
     return isActive ? (
         <div
-            className="messagebox__wrapper"
+            className={classNames("messagebox__wrapper", {
+                success: isSuccess,
+                error: isError,
+            })}
             onClick={onSetMessageBoxDisable}
             aria-hidden
         >
             <div className="messagebox">
-                <img className="messagebox__img" src={errorIcon} alt="error" />
+                <img
+                    className="messagebox__img"
+                    src={isSuccess ? successIcon : errorIcon}
+                    alt="error"
+                />
                 <p className="messagebox__text">{messageText}</p>
             </div>
         </div>
