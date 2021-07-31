@@ -42,7 +42,7 @@ export const Shorten = () => {
     // Копироание короткой ссылки
     const onCopy = (e) => {
         e.preventDefault();
-        navigator.clipboard.writeText(`http://localhost:5555/${redirectLink}`);
+        navigator.clipboard.writeText(`http://ryletd.ru/${redirectLink}`);
         dispatch(setMessageboxSuccess(values.copied));
     };
 
@@ -56,7 +56,7 @@ export const Shorten = () => {
             />
             {redirectLink && (
                 <Input
-                    value={`http://localhost:5555/${redirectLink}`}
+                    value={`http://ryletd.ru/${redirectLink}`}
                     readOnly
                     className="animate"
                 />
