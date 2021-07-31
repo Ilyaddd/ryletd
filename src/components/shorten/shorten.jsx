@@ -12,7 +12,7 @@ import {
 import { values } from "../../store/messagebox/values";
 import { checkIsLink } from "../../utils/check-is-link";
 
-import copyImg from "./assets/arrow.svg";
+import copyImg from "./assets/copy.svg";
 import shortenImg from "./assets/arrow.svg";
 
 import "./shorten.sass";
