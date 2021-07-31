@@ -21,12 +21,19 @@ export const Shorten = () => {
     const dispatch = useDispatch();
     const { redirectLink } = useSelector((state) => state.link);
     const [originalLink, setOriginalLink] = useState(null);
+    const [isCopy, setIsCopy] = useState(false);
+
+    const onChengeLink = (text) => {
+        setOriginalLink(text);
+        setIsCopy(false);
+    };
 
     // Сокращение оригинальной ссылки
     const onShorten = (e) => {
         e.preventDefault();
         if (checkIsLink(originalLink)) {
             dispatch(shortenRequest(originalLink));
+            setIsCopy(true);
         } else {
             dispatch(setMessageboxFailture(values.incorrect));
         }
@@ -44,22 +51,18 @@ export const Shorten = () => {
             <Input
                 title="Shorten link"
                 value={originalLink}
-                onFieldChange={setOriginalLink}
+                onFieldChange={onChengeLink}
                 isFocus
             />
-            {redirectLink ? (
-                <>
-                    <Input
-                        value={`http://localhost:5555/${redirectLink}`}
-                        readOnly
-                        className="animate"
-                    />
-                    <Button
-                        value="Copy"
-                        activeValue={copyImg}
-                        onClick={onCopy}
-                    />
-                </>
+            {redirectLink && (
+                <Input
+                    value={`http://localhost:5555/${redirectLink}`}
+                    readOnly
+                    className="animate"
+                />
+            )}
+            {isCopy ? (
+                <Button value="Copy" activeValue={copyImg} onClick={onCopy} />
             ) : (
                 <Button
                     value="Shorten"

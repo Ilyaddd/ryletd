@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import classnames from "classnames";
 
 import "./input.sass";
@@ -8,11 +8,11 @@ export const Input = ({
     value,
     name,
     placeholder = "",
-    onFieldChange,
+    onFieldChange = () => {},
     className,
     readonly,
-    isFocus,
 }) => {
+    const input = useRef();
     return (
         <div className="input__wrapper">
             <h3 className="input__title">{title}</h3>
@@ -24,9 +24,13 @@ export const Input = ({
                 onChange={(e) => {
                     onFieldChange(e.target.value);
                 }}
+                onFocus={() => {
+                    input.current.select();
+                }}
                 placeholder={placeholder}
                 autoComplete="off"
                 readOnly={readonly}
+                ref={input}
             />
         </div>
     );
