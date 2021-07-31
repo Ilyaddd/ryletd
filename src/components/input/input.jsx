@@ -11,6 +11,7 @@ export const Input = ({
     onFieldChange,
     className,
     readonly,
+    isFocus,
 }) => {
     return (
         <div className="input__wrapper">

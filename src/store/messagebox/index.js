@@ -1,7 +1,5 @@
 import { TYPES } from "../types";
 
-import { MESSAGEBOX_TEXTS } from "./values";
-
 const initialState = {
     messageText: "",
     isSuccess: false,
@@ -15,7 +13,7 @@ export const messageboxReducer = (state = initialState, action) => {
                 ...state,
                 isSuccess: true,
                 isError: false,
-                messageText: MESSAGEBOX_TEXTS.LINK_COPIED,
+                messageText: action.text,
             };
         }
 
@@ -24,7 +22,7 @@ export const messageboxReducer = (state = initialState, action) => {
                 ...state,
                 isSuccess: false,
                 isError: true,
-                messageText: MESSAGEBOX_TEXTS.GET_LINK_ERROR,
+                messageText: action.text,
             };
         }
 

@@ -5,7 +5,11 @@ import { Input } from "../input";
 import { Button } from "../button";
 
 import { shortenRequest } from "../../store/link/actions";
-import { setMessageboxSuccess } from "../../store/messagebox/actions";
+import {
+    setMessageboxSuccess,
+    setMessageboxFailture,
+} from "../../store/messagebox/actions";
+import { values } from "../../store/messagebox/values";
 import { checkIsLink } from "../../utils/check-is-link";
 
 import copyImg from "./assets/arrow.svg";
@@ -23,13 +27,16 @@ export const Shorten = () => {
         e.preventDefault();
         if (checkIsLink(originalLink)) {
             dispatch(shortenRequest(originalLink));
+        } else {
+            dispatch(setMessageboxFailture(values.incorrect));
         }
     };
 
     // Копироание короткой ссылки
     const onCopy = (e) => {
         e.preventDefault();
-        dispatch(setMessageboxSuccess());
+        navigator.clipboard.writeText(`http://localhost:5555/${redirectLink}`);
+        dispatch(setMessageboxSuccess(values.copied));
     };
 
     return (
@@ -38,12 +45,13 @@ export const Shorten = () => {
                 title="Shorten link"
                 value={originalLink}
                 onFieldChange={setOriginalLink}
+                isFocus
             />
             {redirectLink ? (
                 <>
                     <Input
                         value={`http://localhost:5555/${redirectLink}`}
-                        readOnly={true}
+                        readOnly
                         className="animate"
                     />
                     <Button

@@ -1,4 +1,5 @@
-export const MESSAGEBOX_TEXTS = {
-    GET_LINK_ERROR: "Link not found!",
-    LINK_COPIED: "Link copied!",
+export const values = {
+    notFound: "Link not found!",
+    copied: "Link copied!",
+    incorrect: "Link is incorrect."
 };

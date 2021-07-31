@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
-import { setMessageBoxDefault } from "../../store/messagebox/actions";
+import { setMessageboxDefault } from "../../store/messagebox/actions";
 
 import errorIcon from "./assets/error.svg";
 import successIcon from "./assets/success.svg";
@@ -15,7 +15,7 @@ export const Messagebox = () => {
     );
 
     const isActive = isSuccess || isError;
-    const onSetMessageBoxDisable = () => dispatch(setMessageBoxDefault());
+    const onSetMessageBoxDisable = () => dispatch(setMessageboxDefault());
 
     useEffect(() => {
         if (isActive) {

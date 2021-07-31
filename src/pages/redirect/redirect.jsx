@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import { getLinkRequest } from "../../store/link/actions";
 
 import { setMessageboxFailture } from "../../store/messagebox/actions";
+import { values } from "../../store/messagebox/values";
 
 export const RedirectPage = () => {
     const dispatch = useDispatch();
@@ -24,7 +25,7 @@ export const RedirectPage = () => {
         );
     }
 
-    if (isError) dispatch(setMessageboxFailture());
+    if (isError) dispatch(setMessageboxFailture(values.notFound));
 
     return <>{isError && <Redirect to="/" />}</>;
 };
