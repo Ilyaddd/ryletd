@@ -13,7 +13,7 @@ export const App = () => {
             <Switch>
                 <Route exact path="/" component={Main} />
                 <Route exact path="/:shortLink" component={RedirectPage} />
-                <Route component={PageNotFound} />
+                <Route component={PageNotFound} /> */}
             </Switch>
         </div>
     );
