@@ -23,7 +23,7 @@ function* getLink({ shortLink }) {
     try {
         const { data } = yield call(
             axiosInstance.get,
-            ENDPOINTS.GET_LINK_ENDPOINT,
+            ENDPOINTS.FOLLOW_ENDPOINT,
             { params: shortLink }
         );
         yield put(getLinkSuccess(data));

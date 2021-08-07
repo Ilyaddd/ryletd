@@ -14,12 +14,13 @@ export const RedirectPage = () => {
 
     useEffect(() => {
         dispatch(getLinkRequest({ shortLink }));
-    }, [dispatch]);
+    }, []);
+
     const { redirectLink, isError } = useSelector((state) => state.link);
 
     if (redirectLink !== undefined && redirectLink !== "") {
         window.location.replace(
-            redirectLink.includes("http")
+            redirectLink?.includes("http")
                 ? redirectLink
                 : `https://${redirectLink}`
         );

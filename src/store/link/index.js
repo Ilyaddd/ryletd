@@ -9,6 +9,7 @@ const initialState = {
 };
 
 export const linkReducer = (state = initialState, action) => {
+    console.log(action.original_link);
     switch (action.type) {
         // Сокращение ссылки
         case TYPES.REQUEST:
@@ -23,7 +24,7 @@ export const linkReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: false,
-                redirectLink: action.shortLink.shortLink,
+                redirectLink: action.shortLink,
             };
 
         // Получение оригинальной ссылки
@@ -38,7 +39,7 @@ export const linkReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 isError: false,
-                redirectLink: action.original_link.original_link,
+                redirectLink: action.original_link,
             };
 
         // FAILURE

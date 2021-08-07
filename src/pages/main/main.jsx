@@ -7,7 +7,7 @@ import "./main.sass";
 
 export const Main = () => (
     <form id="main__form">
-        <Follow />
         <Shorten />
+        <Follow />
     </form>
 );
