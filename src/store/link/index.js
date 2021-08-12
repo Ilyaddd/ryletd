@@ -9,7 +9,6 @@ const initialState = {
 };
 
 export const linkReducer = (state = initialState, action) => {
-    console.log(action.original_link);
     switch (action.type) {
         // Сокращение ссылки
         case TYPES.REQUEST:

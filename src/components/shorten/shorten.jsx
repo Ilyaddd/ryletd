@@ -47,7 +47,7 @@ export const Shorten = () => {
     };
 
     return (
-        <section className="section">
+        <form className="form">
             <Input
                 title="Shorten link"
                 value={originalLink}
@@ -70,6 +70,6 @@ export const Shorten = () => {
                     onClick={onShorten}
                 />
             )}
-        </section>
+        </form>
     );
 };
