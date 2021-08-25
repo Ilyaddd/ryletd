@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 
@@ -21,15 +21,23 @@ export const File = () => {
         dispatch(getFileRequest(url));
     }, []);
 
+    useEffect(() => {
+        if (filesList.length) {
+            if (filesList.length > 1) {
+                return window.location.replace(
+                    `${HOST}\\files\\${filesList[0]?.url}`
+                );
+            }
+            window.location.replace(
+                `${HOST}\\files\\${filesList[0]?.url}\\${filesList[0]?.name}`
+            );
+        }
+    }, [filesList]);
+
     useEffect(() => setFiles(filesList), [filesList]);
 
     const downloadAllFiles = () => {
-        files?.map((file) => {
-            window.location = `${HOST}\\files\\${file.url}\\${file.name}`;
-            // window.location.replace(
-            //     `${HOST}\\files\\${file.url}\\${file.name}`
-            // );
-        });
+        window.location.replace(`${HOST}\\files\\${files[0].url}`);
     };
 
     return (
@@ -54,3 +62,5 @@ export const File = () => {
         </>
     );
 };
+
+// http://localhost:5500\files\rev\Введение в реверсинг с нуля используя IDA PRO. Часть 4 _ WASM.mhtml
