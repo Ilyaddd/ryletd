@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router";
+import { useParams, Redirect } from "react-router";
 
 import { Button } from "../../components/button";
+import { RedirectPage } from "../../pages/redirect";
 
 import { getFileRequest } from "../../store/files/actions";
 import { HOST } from "../../store/endpoints";
@@ -15,7 +16,7 @@ export const File = () => {
     const { url } = useParams();
     const [files, setFiles] = useState();
 
-    const { filesList } = useSelector((state) => state.file);
+    const { filesList, isError } = useSelector((state) => state.file);
 
     useEffect(() => {
         dispatch(getFileRequest(url));
@@ -42,25 +43,29 @@ export const File = () => {
 
     return (
         <>
-            <div className="files">
-                {files?.map((file, idx) => (
-                    <a
-                        key={idx.toString()}
-                        className="file__item"
-                        href={`${HOST}\\files\\${file.url}\\${file.name}`}
-                    >
-                        {file.name}
-                    </a>
-                ))}
-            </div>
+            {isError ? (
+                <Redirect to="/" />
+            ) : (
+                <>
+                    <div className="files">
+                        {files?.map((file, idx) => (
+                            <a
+                                key={idx.toString()}
+                                className="file__item"
+                                href={`${HOST}\\files\\${file.url}\\${file.name}`}
+                            >
+                                {file.name}
+                            </a>
+                        ))}
+                    </div>
 
-            <Button
-                value="Download all"
-                activeValue={btnImg}
-                onClick={downloadAllFiles}
-            />
+                    <Button
+                        value="Download all"
+                        activeValue={btnImg}
+                        onClick={downloadAllFiles}
+                    />
+                </>
+            )}
         </>
     );
 };
-
-// http://localhost:5500\files\rev\Введение в реверсинг с нуля используя IDA PRO. Часть 4 _ WASM.mhtml
