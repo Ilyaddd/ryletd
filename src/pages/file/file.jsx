@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, Redirect } from "react-router";
 
 import { Button } from "../../components/button";
-import { RedirectPage } from "../../pages/redirect";
 
 import { getFileRequest } from "../../store/files/actions";
 import { HOST } from "../../store/endpoints";
