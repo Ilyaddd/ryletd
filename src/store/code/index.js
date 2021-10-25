@@ -4,41 +4,25 @@ const initialState = {
     isLoading: true,
     isError: false,
     Error: "",
-    originalLink: "",
-    redirectLink: "",
+    code: "",
 };
 
-export const linkReducer = (state = initialState, action) => {
+export const codeReducer = (state = initialState, action) => {
     switch (action.type) {
         // Сокращение ссылки
-        case TYPES.SHORTEN_REQUEST:
+        case TYPES.GET_CODE_REQUEST:
             return {
                 ...state,
                 isLoading: true,
                 isError: false,
             };
 
-        case TYPES.SHORTEN_REQUEST_SUCCESS:
+        case TYPES.GET_CODE_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
                 isError: false,
-                redirectLink: action.shortLink,
-            };
-
-        // Получение оригинальной ссылки
-        case TYPES.GET_LINK_REQUEST:
-            return {
-                ...state,
-                isLoading: true,
-                isError: false,
-            };
-        case TYPES.GET_LINK_REQUEST_SUCCESS:
-            return {
-                ...state,
-                isLoading: false,
-                isError: false,
-                redirectLink: action.original_link,
+                code: action.code,
             };
 
         // FAILURE

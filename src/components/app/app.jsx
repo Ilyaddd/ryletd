@@ -5,7 +5,7 @@ import { Messagebox } from "../messagebox";
 import { Main } from "../../pages/main";
 import { RedirectPage } from "../../pages/redirect";
 import { File } from "../../pages/file";
-import { Custom } from "../../pages/custom";
+import { Code } from "../../pages/code";
 import { PageNotFound } from "../../pages/pageNotFound";
 
 export const App = () => {
@@ -16,7 +16,7 @@ export const App = () => {
                 <Route exact path="/" component={Main} />
                 <Route exact path="/:shortLink" component={RedirectPage} />
                 <Route exact path="/file/:url" component={File} />
-                <Route exact path="/page/:url" component={Custom} />
+                <Route exact path="/code/:url" component={Code} />
                 <Route component={PageNotFound} />
             </Switch>
         </div>
