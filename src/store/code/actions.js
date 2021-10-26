@@ -5,7 +5,7 @@ export const getCodeRequest = (url) => ({
     url,
 });
 
-export const getCodeSuccess = ({ code }) => ({
+export const getCodeSuccess = (code) => ({
     type: TYPES.GET_CODE_SUCCESS,
     code,
 });

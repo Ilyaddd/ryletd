@@ -13,6 +13,7 @@ export const Code = () => {
         dispatch(getCodeRequest(url));
     }, []);
 
+    console.log(code);
     document.querySelector("html").innerHTML = code;
 
     return null;
