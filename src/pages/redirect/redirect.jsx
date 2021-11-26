@@ -14,7 +14,7 @@ export const RedirectPage = () => {
 
     useEffect(() => {
         dispatch(getLinkRequest({ shortLink }));
-    }, []);
+    }, [dispatch, shortLink]);
 
     const { redirectLink, isError } = useSelector((state) => state.link);
 

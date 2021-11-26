@@ -19,7 +19,7 @@ export const File = () => {
 
     useEffect(() => {
         dispatch(getFileRequest(url));
-    }, []);
+    }, [dispatch, url]);
 
     useEffect(() => {
         if (filesList.length) {

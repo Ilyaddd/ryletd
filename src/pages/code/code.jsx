@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
 
@@ -11,9 +11,8 @@ export const Code = () => {
 
     useEffect(() => {
         dispatch(getCodeRequest(url));
-    }, []);
+    }, [dispatch, url]);
 
-    console.log(code);
     document.querySelector("html").innerHTML = code;
 
     return null;

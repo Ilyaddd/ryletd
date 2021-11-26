@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
 
@@ -15,13 +15,16 @@ export const Messagebox = () => {
     );
 
     const isActive = isSuccess || isError;
-    const onSetMessageBoxDisable = () => dispatch(setMessageboxDefault());
+    const onSetMessageBoxDisable = useCallback(
+        () => dispatch(setMessageboxDefault()),
+        [dispatch]
+    );
 
     useEffect(() => {
         if (isActive) {
             setTimeout(() => onSetMessageBoxDisable(), 4000);
         }
-    }, [isActive]);
+    }, [isActive, onSetMessageBoxDisable]);
 
     return isActive ? (
         <div
