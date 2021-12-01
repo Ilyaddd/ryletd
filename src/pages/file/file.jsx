@@ -17,28 +17,25 @@ export const File = () => {
 
     const { filesList, isError } = useSelector((state) => state.file);
 
-    useEffect(() => {
-        dispatch(getFileRequest(url));
-    }, [dispatch, url]);
+    useEffect(() => dispatch(getFileRequest(url)), [dispatch, url]);
 
     useEffect(() => {
-        if (filesList.length) {
-            if (filesList.length > 1) {
+        if (filesList.files?.length) {
+            if (filesList.files?.length > 1) {
                 return window.location.replace(
-                    `${HOST}\\files\\${filesList[0]?.url}`
+                    `${HOST}\\files\\${filesList.files[0]?.url}`
                 );
             }
             window.location.replace(
-                `${HOST}\\files\\${filesList[0]?.url}\\${filesList[0]?.name}`
+                `${HOST}\\files\\${filesList?.files[0]?.url}\\${filesList?.files[0]?.name}`
             );
         }
     }, [filesList]);
 
-    useEffect(() => setFiles(filesList), [filesList]);
+    useEffect(() => setFiles(filesList.files), [filesList]);
 
-    const downloadAllFiles = () => {
+    const downloadAllFiles = () =>
         window.location.replace(`${HOST}\\files\\${files[0].url}`);
-    };
 
     return (
         <>
@@ -47,9 +44,9 @@ export const File = () => {
             ) : (
                 <>
                     <div className="files">
-                        {files?.map((file, idx) => (
+                        {files?.map((file) => (
                             <a
-                                key={idx.toString()}
+                                key={file.id}
                                 className="file__item"
                                 href={`${HOST}\\files\\${file.url}\\${file.name}`}
                             >
