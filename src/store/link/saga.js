@@ -2,7 +2,7 @@ import { put, call, takeLatest } from "redux-saga/effects";
 
 import { ENDPOINTS } from "../endpoints";
 import { TYPES } from "../types";
-import { shortenSuccess, getLinkSuccess, requestFailure } from "./actions";
+import { shortenSuccess, requestFailure } from "./actions";
 
 import { axiosInstance } from "../../utils/axios-instance";
 
