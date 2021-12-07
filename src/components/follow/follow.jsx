@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 
 import { Input } from "../input";
 import { Button } from "../button";
@@ -21,23 +20,15 @@ export const Follow = () => {
 
     return (
         <form className="form">
-            {isRedirect ? (
-                <Redirect to={shortLink} />
-            ) : (
-                <>
-                    <Input
-                        title="Follow the link"
-                        name="long"
-                        value={shortLink}
-                        onFieldChange={setshortLink}
-                    />
-                    <Button
-                        value="Follow"
-                        activeValue={btnImg}
-                        onClick={onFollow}
-                    />
-                </>
-            )}
+            {isRedirect &&
+                window.location.replace("https://ryletd.ru/" + shortLink)}
+            <Input
+                title="Follow the link"
+                name="long"
+                value={shortLink}
+                onFieldChange={setshortLink}
+            />
+            <Button value="Follow" activeValue={btnImg} onClick={onFollow} />
         </form>
     );
 };

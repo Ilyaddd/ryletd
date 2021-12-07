@@ -19,20 +19,6 @@ function* shortenLink({ originalLink }) {
     }
 }
 
-function* getLink({ shortLink }) {
-    try {
-        const { data } = yield call(
-            axiosInstance.get,
-            ENDPOINTS.FOLLOW_ENDPOINT,
-            { params: shortLink }
-        );
-        yield put(getLinkSuccess(data));
-    } catch (err) {
-        yield put(requestFailure(err));
-    }
-}
-
 export default function* linkSaga() {
     yield takeLatest(TYPES.SHORTEN_REQUEST, shortenLink);
-    yield takeLatest(TYPES.GET_LINK_REQUEST, getLink);
 }
