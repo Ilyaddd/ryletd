@@ -4,5 +4,4 @@ export const HOST = "https://api.ryletd.ru";
 export const ENDPOINTS = {
     SHORTEN_ENDPOINT: "/shorten",
     FILE_ENDPOINT: "/file",
-    CODE_ENDPOINT: "/rawcode",
 };
