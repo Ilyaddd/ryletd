@@ -11,6 +11,9 @@
 //     return !!pattern.test(link);
 // };
 
-export const checkIsLink = (link) => link;
+// export const checkIsLink = (link) => link;
+
+const pattern = new RegExp("^.+\\..+");
+export const checkIsLink = (link) => !!pattern.test(link);
 
 export default checkIsLink;
