@@ -20,7 +20,7 @@
         "serve": "^13.0.2"
     },
     "scripts": {
-        "start": "set BROWSER=none && set PORT=5555 && react-scripts start",
+        "start": "set BROWSER=none && set PORT=5555 && set NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
         "deploy": "serve -s -l 5555 build",
         "build": "react-scripts build",
         "test": "react-scripts test",
